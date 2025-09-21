@@ -1,75 +1,60 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import CardItem from '@/components/CardItem';
+import CustomCarousel from '@/components/CustomCarousel';
+import { coffeeData } from '@/data/Home';
+import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
+import {
+  Alert,
+  FlatList,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import '../../global.css';
 
 export default function HomeScreen() {
+  const [activeCategory, setActiveCategory] = useState('All Coffee');
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+    <SafeAreaView className="flex-1 items-center bg-white">
+      <View className="w-full h-52 bg-green-500 top-0 rounded-b-2xl shadow-md"></View>
+      <TouchableOpacity className="flex-row items-center absolute top-10 left-5 bg-white p-2 rounded-full shadow-md">
+        <Image src="https://picsum.photos/200" className="w-10 h-10 rounded-full mr-2" />
+        <Text className="font-semibold">Xin chào! Thanh An</Text>
+      </TouchableOpacity>
+      <View className="absolute top-10 left-5 right-5 p-4 rounded-lg">
+        <TextInput
+          className="w-90 h-12 bg-white rounded-full px-4 mt-16 shadow-md"
+          placeholder="Tìm kiếm..."
+          placeholderTextColor="#888"
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        <TouchableOpacity
+          className="absolute right-5 top-[72px] bg-green-500 p-3 rounded-full shadow-md"
+          onPress={() =>
+            Alert.alert('Tìm kiếm thất bại', 'Chức năng tìm kiếm chưa được triển khai')
+          }
+        >
+          <Ionicons name="search" size={16} color="white" />
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView className="w-full px-4">
+        <View className="w-full h-56 mt-4">
+          <CustomCarousel />
+        </View>
+
+        <FlatList
+          className="mt-5"
+          data={coffeeData}
+          renderItem={({ item }) => <CardItem item={item} />}
+          keyExtractor={(item) => item.id}
+          numColumns={2}
+          contentContainerStyle={{ paddingBottom: 100 }}
+        />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});

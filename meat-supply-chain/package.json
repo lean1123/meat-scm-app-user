@@ -1,0 +1,16 @@
+{
+  "name": "@meat-supply-chain/source",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/react-native": "21.4.0",
+    "@nx/workspace": "21.4.0",
+    "nx": "21.4.0"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
