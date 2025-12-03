@@ -1,9 +1,7 @@
-// lib/apiClient.ts
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios, { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 
-const API_URL = '';
+const API_URL = 'https://d2678e1b5fbd.ngrok-free.app/api/v1';
 const PUBLIC_API_URL = [{ urlPattern: /\/assets(\/.*)?$/, methods: ['GET'] }];
 
 const axiosClient: AxiosInstance = axios.create({

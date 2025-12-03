@@ -17,7 +17,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          tabBarIcon: ({ size }) => <Ionicons name="home" size={size} color="white" />,
+          tabBarIcon: ({ size }) => <Ionicons name="home" size={size} color="#22c55e" />,
         }}
       />
 
@@ -27,7 +27,7 @@ export default function TabLayout() {
           tabBarButton: () => (
             <View style={styles.qrContainer}>
               <TouchableOpacity style={styles.qrButton} onPress={() => router.push('/qrCode')}>
-                <Ionicons name="qr-code" size={28} color="white" />
+                <Ionicons name="qr-code" size={28} color="#22c55e" />
               </TouchableOpacity>
             </View>
           ),
@@ -37,7 +37,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          tabBarIcon: ({ size }) => <Ionicons name="person" size={size} color="white" />,
+          tabBarIcon: ({ size }) => <Ionicons name="person" size={size} color="#22c55e" />,
         }}
       />
     </Tabs>
@@ -50,13 +50,14 @@ const styles = StyleSheet.create({
     left: 20,
     right: 20,
     height: 70,
-    backgroundColor: '#22c55e',
-    shadowOpacity: 0.1,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
     shadowOffset: { width: 0, height: 5 },
     shadowRadius: 10,
     elevation: 5,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
   },
   qrContainer: {
     top: -20,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
-    backgroundColor: '#22c55e',
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',

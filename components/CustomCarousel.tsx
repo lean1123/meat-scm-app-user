@@ -34,7 +34,7 @@ function CustomCarousel() {
             }}
           >
             <Image
-              src="https://media.istockphoto.com/id/1128687123/photo/shopping-bag-full-of-fresh-vegetables-and-fruits.jpg?s=612x612&w=0&k=20&c=jXInOVcduhEnfuUVffbUacldkF5CwAeThD3MDUXCItM="
+              src="https://img.freepik.com/free-psd/fresh-supermarket-template-design_23-2149623219.jpg"
               className="w-full h-full"
             />
           </View>
